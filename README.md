@@ -18,7 +18,14 @@ $ mkdir pip
 $ cd pip
 $ wget https://bootstrap.pypa.io/get-pip.py
 
+if you are behind a corporate firewall you may need ntml authentication. Install a proxy server like px.
 
+configure python to pass through the local proxy:
+$ export https_proxy=http://127.0.0.1:3128/
+$ export http_proxy=http://127.0.0.1:3128/
+
+then
+$ python get-pip.py
 
 
 ## Install Elasticsearch
@@ -89,10 +96,10 @@ To run the IPython Notebook Examples
 
 2. Then use the following commands to install the required dependencies
   ```
-  git clone git@github.com:o19s/relevant-search-book.git
+  git clone https://github.com/davidzof/relevant-search-book.git
   cd relevant-search-book
-  pip install requests
-  pip install jupyter
+  pip install requests ✓
+  pip install jupyter ✓
   cd ipython/
   ```
 
