@@ -6,51 +6,12 @@ Relevant Search is all about leveraging Solr and Elasticsearch to build more int
 
 # How to run
 
-## Install Python
-
-Examples for this book are written in Python 2.7 and use iPython notebook. The first thing you'll need to do is install Python, pip (the Python package installer).
-
-1. Install Python for your platform [here](https://www.python.org/downloads/). For Windows we recommend the [ActivePython](http://www.activestate.com/activepython) distribution.
-2. Install pip, the Python installer
-on Windows (bash):
-https://www.liquidweb.com/kb/install-pip-windows/
-$ mkdir pip
-$ cd pip
-$ wget https://bootstrap.pypa.io/get-pip.py
-
-if you are behind a corporate firewall you may need ntml authentication. Install a proxy server like px.
-
-configure python to pass through the local proxy:
-$ export https_proxy=http://127.0.0.1:3128/
-$ export http_proxy=http://127.0.0.1:3128/
-
-then
-$ python get-pip.py
-
-
 ## Install Elasticsearch
 
-The examples expect Elasticsearch to be hosted at localhost:9200. So you'll need to install Elasticsearch to work with the examples. There's two ways to install Elasticsearch
-
-### Recommended: Vagrant
-
-Vagrant is a tool for installing and provisioning virtual machines locally for development purposes. If you've never used vagrant, you can follow the installation instructions [here](https://docs.vagrantup.com/v2/installation/). OpenSource Connections maintains a basic Elasticsearch vagrant box [here](https://github.com/o19s/elasticsearch-vagrant).
-
-To use the vagrant box
-
-1. Install vagrant
-2. Clone the Elasticsearch vagrant box from Github locally
+The examples expect Elasticsearch to be hosted at localhost:9200. So you'll need to install Elasticsearch to work with the examples.
 
    ```
-   git clone git@github.com:o19s/elasticsearch-vagrant.git
-   ```
-3. Provision the Vagrant box (this install Elasticsearch and turns the box on)
-
-   ```
-   cd elasticsearch-vagrant
-   vagrant up --provision
-   ```
-4. Confirm Elasticsearch is running
+1. Confirm Elasticsearch is running
 
   ```
   curl -XGET http://localhost:9200
@@ -75,47 +36,42 @@ To use the vagrant box
       }
    ```
 
-5. When you're done working with examples, turn off the Vagrant box
+## Running The Python Examples on Windows
 
-  ```
-  vagrant halt
-  ```
+The examples are written in Python 2.7 (which was EOLed in Jan 2020) in [jupyter notebook](http://ipython.org/notebook.html) depending only on a few basic libraries. The only external library needed is the [requests](http://docs.python-requests.org/en/latest/) HTTP library. Some of the external APIs require API keys (for example TMDB, you can obtain one [here](https://www.themoviedb.org/faq/api)).
 
 
-### Locally on Your Machine
+1. Install Miniconda with Python 2.7
 
-Follow [Elasticsearch's instructions](http://www.elastic.co/guide/en/elasticsearch/reference/1.5/_installation.html) to install Elasticsearch on your machine. 
+Miniconda is a free minimal installer for conda. Conda is an open source package management system and environment management system . Miniconda is a small, bootstrap version of Anaconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages, including pip, zlib and a few others. 
 
-## Running The Python Examples
+see: https://docs.conda.io/en/latest/miniconda.html
 
-The examples are written in Python 2.7 (which was EOLed in Jan 2020) in [ipython notebooks](http://ipython.org/notebook.html) depending only on a few basic libraries. The only external library needed is the [requests](http://docs.python-requests.org/en/latest/) HTTP library. Some of the external APIs require API keys (for example TMDB, you can obtain one [here](https://www.themoviedb.org/faq/api)).
+Conda needs to access the internet. If you are behind a corporate proxy with ntlm authentication install a local proxy such as px and configure the proxy environment variables
+```
+  C:\> setx https_proxy http://127.0.0.1:3128/
+  C:\> setx http_proxy http://127.0.0.1:3128/
+  
+2. Install jupyter notebook (to run the examples)
 
-To run the IPython Notebook Examples
+Run Conda Powershell from the Start menu install jupyterlab and notebook
+```
+(base) PS C:\> conda install -c conda-forge notebook
+(base) PS C:\> conda install -c conda-forge jupyterlab
+(base) PS C:\> conda install -c conda-forge notebook
+```
 
-1. First ensure you have git, python 2.7 and pip installed and in your PATH
-
-2. Then use the following commands to install the required dependencies
+2. Then use the following commands to install the exercuses
   ```
   git clone https://github.com/davidzof/relevant-search-book.git
   cd relevant-search-book
-  pip install requests ✓
-  pip install jupyter ✓
-  pip install notebook - no, no gcc :-( blows up with libzmq
-  
-  install miniconda: https://docs.conda.io/en/latest/miniconda.html
-  If you have a corporate proxy 
-  C:\> setx https_proxy http://127.0.0.1:3128/
-  C:\> setx http_proxy http://127.0.0.1:3128/
-
-Run Conda Powershell from Start menu
-(base) PS C:\> conda install -c conda-forge notebook
   
   cd ipython/
   ```
 
 5. Launch!
 
-  ```ipython notebook```
+  ```jupyter notebook```
 
 6. Play!
 
