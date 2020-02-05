@@ -88,7 +88,7 @@ Follow [Elasticsearch's instructions](http://www.elastic.co/guide/en/elasticsear
 
 ## Running The Python Examples
 
-The examples are written in Python 2.7 in [ipython notebooks](http://ipython.org/notebook.html) depending only on a few basic libraries. The only external library needed is the [requests](http://docs.python-requests.org/en/latest/) HTTP library. Some of the external APIs require API keys (for example TMDB, you can obtain one [here](https://www.themoviedb.org/faq/api)).
+The examples are written in Python 2.7 (which was EOLed in Jan 2020) in [ipython notebooks](http://ipython.org/notebook.html) depending only on a few basic libraries. The only external library needed is the [requests](http://docs.python-requests.org/en/latest/) HTTP library. Some of the external APIs require API keys (for example TMDB, you can obtain one [here](https://www.themoviedb.org/faq/api)).
 
 To run the IPython Notebook Examples
 
@@ -100,6 +100,16 @@ To run the IPython Notebook Examples
   cd relevant-search-book
   pip install requests ✓
   pip install jupyter ✓
+  pip install notebook - no, no gcc :-( blows up with libzmq
+  
+  install miniconda: https://docs.conda.io/en/latest/miniconda.html
+  If you have a corporate proxy 
+  C:\> setx https_proxy http://127.0.0.1:3128/
+  C:\> setx http_proxy http://127.0.0.1:3128/
+
+Run Conda Powershell from Start menu
+(base) PS C:\> conda install -c conda-forge notebook
+  
   cd ipython/
   ```
 
